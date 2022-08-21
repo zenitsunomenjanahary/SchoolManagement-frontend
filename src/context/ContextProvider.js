@@ -4,7 +4,7 @@ const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
     const [collapsed, setCollapsed ] = useState(false);
-    const [theme, setTheme] = useState("dark");
+    const [theme, setTheme] = useState("light");
 
     return (
         <StateContext.Provider value={{collapsed, setCollapsed, theme, setTheme}}>

@@ -6,10 +6,10 @@ import { useStateContext } from '../context/ContextProvider';
 const { Sider } = Layout 
 
 const Sidebar = () => {
-  const { collapsed,theme } = useStateContext();
+  const { collapsed } = useStateContext();
   return (
-    <Sider theme={theme} trigger={null} collapsible collapsed={collapsed} style={{minHeight:"100vh", paddingTop:"1rem"}}>
-        <Menu theme={theme} mode='inline' items={sidebarItems}/>
+    <Sider trigger={null} collapsible collapsed={collapsed} style={{minHeight:"100vh", paddingTop:"1rem"}}>
+        <Menu theme='dark' mode='inline' items={sidebarItems}/>
     </Sider>
   )
 }

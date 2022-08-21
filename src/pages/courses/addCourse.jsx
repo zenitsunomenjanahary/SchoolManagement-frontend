@@ -47,6 +47,12 @@ const AddCourse = () => {
         <Divider/>
         <Form 
             form={form} 
+            labelCol={{
+                span: 3,
+              }}
+              wrapperCol={{
+                span: 14,
+              }}
             name="control-ref" 
             onFinish={onFinish}
             size="middle">
@@ -74,7 +80,9 @@ const AddCourse = () => {
                         }
                     </Select>
                 </Form.Item>
-                <Form.Item >
+                <Form.Item wrapperCol={{
+                    offset:3
+                }}>
                    <Button type='primary' htmlType='submit' >save</Button>
                 </Form.Item>
         </Form>

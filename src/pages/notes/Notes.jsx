@@ -1,53 +1,50 @@
 import React from 'react'
-import { Button, Divider, Table, Typography } from "antd";
-import { NavLink } from "react-router-dom";
+import { Divider, Table, Typography } from "antd";
+import {useQuery } from "react-query";
+import NotesAPI from '../../api/NotesAPI';
+import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 
 const { Title } = Typography;
 
 const Notes = () => {
 
+  const { isLoading, error, data } = useQuery("notes", NotesAPI.getNotes)
+
   const notesColumns = [
     {
-      title: "photo",
-      dataIndex: "photo",
-      key:"photo"
+      title: "classe",
+      dataIndex: "classe",
+      key:"classe",
+      render: (_,record)=> `${record.classe.title}`
     },
     {
-      title: "firstname",
-      dataIndex: "firstname",
-      key:"firstname"
+      title: "student",
+      dataIndex: "student",
+      key:"student",
+      render: (_,record)=> `${record.student.firstname} ${record.student.lastname}`
     },
     {
-      title: "lastname",
-      dataIndex: "lastname",
-      key:"lastname"
+      title: "course",
+      dataIndex: "course",
+      key:"course",
+      render: (_,record)=> `${record.course.title}`
     },
     {
-      title: "sexe",
-      dataIndex: "sexe",
-      key:"sexe"
+      title: "note",
+      dataIndex: "note",
+      key:"note"
     },
-    {
-      title: "email",
-      dataIndex: "email",
-      key:"email"
-    },
-    {
-      title: "phone",
-      dataIndex: "phone",
-      key:"phone"
-    },
-
   ]
+
+  if(isLoading) return <Loading/>
+  if(error) return <Error/>
 
   return (
     <>
       <Title level={3}>Notes</Title>
-      <NavLink to={"/notes-new"}>
-        <Button type='primary' size='large'>add new note</Button>
-      </NavLink>
       <Divider/>
-      <Table columns={notesColumns}/>
+      <Table size="small" bordered columns={notesColumns} dataSource={data}/>
     </>
   )
 }

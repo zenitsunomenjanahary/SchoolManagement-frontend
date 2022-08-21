@@ -11,7 +11,7 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
       refetchOnmount: false,
       refetchOnReconnect: false,
-      retry: false,
+      retry: 1,
       staleTime: 5 * 1000,
     }
   }
@@ -19,11 +19,11 @@ const queryClient = new QueryClient({
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <ContextProvider>
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>
     </ContextProvider>
-  /* </React.StrictMode> */
+  </React.StrictMode>
 );

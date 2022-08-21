@@ -20,6 +20,12 @@ class StudentService {
         return data;
     }
 
+    async getStudentNotes(studentId){
+        const response = await axios.get(`${STUDENT_API_BASE_URL}/notes/${studentId}`);
+        const data = await response.data;
+        return data;
+    }
+
     updateStudent(id, student){
         return axios.put(`${STUDENT_API_BASE_URL}/${id}`, student,{headers:{'Content-Type':"application/json",'Access-Control-Allow-Origin': '*'}});
     }

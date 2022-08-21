@@ -40,6 +40,7 @@ const AddClass = () => {
         <Title level={3}>Add new classe </Title>
         <Divider/>
         <Form 
+            layout='vertical'
             form={form} 
             name="control-ref" 
             onFinish={onFinish}

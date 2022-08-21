@@ -53,12 +53,16 @@ const AddStudent = () => {
         <Title level={3}>Add new Student </Title>
         <Divider/>
         <Form 
-            layout='horizontal'
+            labelCol={{
+                span: 3,
+              }}
+              wrapperCol={{
+                span: 14,
+              }}
             form={form} 
             name="control-ref" 
             encType='multipart/form-data'
-            onFinish={onFinish}
-            size="middle">
+            onFinish={onFinish}>
                 <Form.Item name={"numero"} label={"numero"} rules={[{ required:true }]} hasFeedback>
                     <Input name='numero'/>
                 </Form.Item>
@@ -98,7 +102,11 @@ const AddStudent = () => {
                         }
                     </Select>}
                 </Form.Item>
-                <Form.Item >
+                <Form.Item 
+                    wrapperCol={{
+                        offset: 3,
+                        span: 14,
+                    }}>
                    <Button type='primary' htmlType='submit' >save</Button>
                 </Form.Item>
         </Form>

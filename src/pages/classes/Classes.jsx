@@ -64,10 +64,10 @@ const Classes = () => {
     <>
       <Title level={3}>Classes</Title>
       <NavLink to={"/classes-new"}>
-        <Button type='primary' size='large'>add new classe</Button>
+        <Button type='primary'>add new classe</Button>
       </NavLink>
       <Divider/>
-      <Table columns={classesColumns} dataSource={data}/>
+      <Table bordered size='small' columns={classesColumns} dataSource={data}/>
     </>
   )
 }

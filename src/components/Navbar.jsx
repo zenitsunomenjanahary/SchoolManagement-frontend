@@ -8,7 +8,8 @@ const { Header } = Layout;
 const Navbar = () => {
   const { collapsed, setCollapsed, theme } = useStateContext();
   return (
-    <Header style={{ background: theme === 'light' ? "white" : "#001529"}}>
+    // <Header style={{ background: theme === 'light' ? "white" : "#001529"}}>
+    <Header className={theme === "light" ? "light" : "dark"}>
       {
         React.createElement(collapsed ? AiOutlineMenuUnfold : AiOutlineMenuFold, {
           className:"trigger",

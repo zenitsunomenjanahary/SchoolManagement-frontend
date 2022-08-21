@@ -48,7 +48,12 @@ const AddTeacher = () => {
         <Title level={3}>Add new Teacher </Title>
         <Divider/>
         <Form 
-            layout='horizontal'
+            labelCol={{
+                span: 3,
+                }}
+                wrapperCol={{
+                span: 14,
+                }}
             form={form} 
             name="control-ref" 
             encType='multipart/form-data'
@@ -75,7 +80,9 @@ const AddTeacher = () => {
                 <Form.Item name={"phone"} label={"phone"} rules={[{ required:true }]} hasFeedback>
                     <Input name='phone' value={phone} onChange={(e) => setPhone(e.target.value)}/>
                 </Form.Item>
-                <Form.Item >
+                <Form.Item wrapperCol={{
+                    offset:3
+                }} >
                    <Button type='primary' htmlType='submit' >save</Button>
                 </Form.Item>
         </Form>

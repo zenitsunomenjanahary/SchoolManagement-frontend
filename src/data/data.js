@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { AiFillDashboard,AiOutlineUser,AiFillRead} from "react-icons/ai"
+import { IoSchoolSharp} from "react-icons/io5"
 import {FaTasks} from "react-icons/fa"
 
 export const sidebarItems = [
@@ -10,7 +11,7 @@ export const sidebarItems = [
     },
     {
         key: "students",
-        icon: <AiOutlineUser/>,
+        icon: <IoSchoolSharp/>,
         label: <NavLink to="/students">Students</NavLink>
     },
     {

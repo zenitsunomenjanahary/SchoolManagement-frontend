@@ -75,10 +75,10 @@ const Courses = () => {
     <>
       <Title level={3}>Courses</Title>
       <NavLink to={"/courses-new"}>
-        <Button type='primary' size='large'>add new course</Button>
+        <Button type='primary'>add new course</Button>
       </NavLink>
       <Divider/>
-      <Table columns={coursesColumns} dataSource={data}/>
+      <Table bordered size='small' columns={coursesColumns} dataSource={data}/>
     </>
   )
 }

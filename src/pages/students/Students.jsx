@@ -5,7 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
 import StudentsAPI from '../../api/StudentsAPI';
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { AiFillDelete, AiFillEdit, AiFillEye } from 'react-icons/ai';
 const { Title } = Typography;
 
 const Students = () => {
@@ -14,7 +14,7 @@ const Students = () => {
   const { isLoading, error, data } = useQuery("students", StudentsAPI.getStudents);
   const { mutate: deleteStudent } = useMutation((student)=> StudentsAPI.deleteStudent(student),{
     onSuccess:()=>{
-      queryClient.invalidateQueries("classes");
+      queryClient.invalidateQueries("students");
       notification.success({
         message: "student deleted successfully",
         description: "Process ended"
@@ -42,7 +42,7 @@ const Students = () => {
     },
     {
       title: "classe",
-      dataIndex: "class",
+      dataIndex: "classe",
       key:"classe",
       render: (_,record)=>(<>
        {record.classe.title}
@@ -64,7 +64,10 @@ const Students = () => {
       key:"actions",
       render: (_,record) => (
         <Space>
-          <NavLink to={`/student-edit-${record._id}`}>
+          <NavLink to={`/student-view-notes/${record._id}`}>
+            <Button value={record._id} icon={<AiFillEye/>}/>
+          </NavLink>
+          <NavLink to={`/student-edit/${record._id}`}>
             <Button value={record._id} icon={<AiFillEdit/>}/>
           </NavLink>
           <Button 
@@ -95,10 +98,10 @@ const Students = () => {
     <>
       <Title level={3}>Students</Title>
       <NavLink to={"/students-new"}>
-        <Button type='primary' size='large'>add student</Button>
+        <Button type='primary'>add student</Button>
       </NavLink>
       <Divider/>
-      <Table columns={studentColumns} dataSource={data} />
+      <Table size='small' bordered columns={studentColumns} dataSource={data} />
     </>
   )
 }
